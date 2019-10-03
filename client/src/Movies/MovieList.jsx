@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -34,7 +35,7 @@ function MovieDetails({ movie }) {
     title, director, metascore, stars,
   } = movie;
   return (
-    <div className="movie-card">
+    <Link to={`/movie/${movie.id}`} className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
         Director:
@@ -53,16 +54,19 @@ function MovieDetails({ movie }) {
           {star}
         </div>
       ))}
-    </div>
+    </Link>
   );
 }
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     director: PropTypes.string,
-    metascore: PropTypes.string,
-    stars: PropTypes.string,
+    metascore: PropTypes.number,
+    stars: PropTypes.arrayOf(
+      PropTypes.string,
+    ),
   }).isRequired,
 };
 

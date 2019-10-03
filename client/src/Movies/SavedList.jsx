@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -8,7 +9,7 @@ const SavedList = ({ list }) => (
     {list.map((movie) => (
       <span className="saved-movie">{movie.title}</span>
     ))}
-    <div className="home-button">Home</div>
+    <Link to="/" className="home-button">Home</Link>
   </div>
 );
 

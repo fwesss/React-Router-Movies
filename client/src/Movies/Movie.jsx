@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 
-const Movie = (props) => {
-  const [movie, setMovie] = useState({});
+const Movie = ({ match }) => {
+  const [movie, setMovie] = useState(undefined);
 
   useEffect(() => {
-    const id = 1;
+    const { id } = match.params;
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,7 +19,7 @@ const Movie = (props) => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [match.params, match.params.id]);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -58,6 +59,14 @@ const Movie = (props) => {
       <div className="save-button">Save</div>
     </div>
   );
+};
+
+Movie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default Movie;
