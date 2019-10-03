@@ -35,25 +35,27 @@ function MovieDetails({ movie }) {
     title, director, metascore, stars,
   } = movie;
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
+    <Link to={`/movie/${movie.id}`}>
+      <div className="movie-card">
+        <h2>{title}</h2>
+        <div className="movie-director">
         Director:
 
-        <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
+          <em>{director}</em>
+        </div>
+        <div className="movie-metascore">
         Metascore:
 
-        <strong>{metascore}</strong>
-      </div>
-      <h3>Actors</h3>
-
-      {stars.map((star) => (
-        <div key={star} className="movie-star">
-          {star}
+          <strong>{metascore}</strong>
         </div>
-      ))}
+        <h3>Actors</h3>
+
+        {stars.map((star) => (
+          <div key={star} className="movie-star">
+            {star}
+          </div>
+        ))}
+      </div>
     </Link>
   );
 }
