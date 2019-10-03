@@ -19,7 +19,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
