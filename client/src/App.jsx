@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
@@ -16,10 +17,31 @@ const App = () => {
   return (
     <div>
       <SavedList list={savedList} />
-      <Route exact path="/" component={MovieList} />
-      <Route path="/movie/:id" component={Movie} />
+      <Route
+        exact
+        path="/"
+        component={MovieList}
+      />
+      <Route
+        path="/movie/:id"
+        render={(props) => (
+          <Movie
+            addToSavedList={addToSavedList}
+            match={props.match}
+            savedList={savedList}
+          />
+        )}
+      />
     </div>
   );
+};
+
+App.propTypes = {
+  match: PropTypes.string,
+};
+
+App.defaultProps = {
+  match: '',
 };
 
 export default App;

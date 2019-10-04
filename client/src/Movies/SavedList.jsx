@@ -7,7 +7,7 @@ const SavedList = ({ list }) => (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
     {list.map((movie) => (
-      <span className="saved-movie">{movie.title}</span>
+      <Link to={`/movie/${movie.id}`} className="saved-movie" key={movie.id}>{movie.title}</Link>
     ))}
     <Link to="/" className="home-button">Home</Link>
   </div>
@@ -15,7 +15,7 @@ const SavedList = ({ list }) => (
 
 SavedList.propTypes = {
   list: PropTypes.arrayOf(
-    PropTypes.string,
+    PropTypes.object,
   ).isRequired,
 };
 
